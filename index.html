@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>9 Square · Architects | Gandhinagar</title>
+  <title>9 SQUARE · architecture studio</title>
+  <!-- Inter font for modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <!-- Font Awesome icons (optional but nice) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -12,271 +18,399 @@
     }
 
     body {
-      background-color: #f5f5f5;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #1a1a1a;
-      padding: 20px;
+      background-color: #e9e6e1;  /* warm grey background – not plain white */
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      color: #1e1b18;
+      padding: 2rem 1.5rem;
     }
 
-    .page {
-      max-width: 1200px;
+    /* main card – subtle depth and texture */
+    .studio {
+      max-width: 1280px;
       margin: 0 auto;
-      background: white;
-      border-radius: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      padding: 40px;
+      background-color: #ffffff;
+      border-radius: 2.5rem 2.5rem 2rem 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(180, 160, 140, 0.2);
+      overflow: hidden;
+      backdrop-filter: blur(2px);
+      transition: box-shadow 0.2s;
     }
 
-    /* rating */
-    .rating-wrapper {
+    .studio:hover {
+      box-shadow: 0 30px 55px -10px rgba(70, 50, 40, 0.2), 0 0 0 1px rgba(140, 120, 100, 0.3);
+    }
+
+    /* interior padding */
+    .content {
+      padding: 3rem 3rem 2.5rem 3rem;
+    }
+
+    /* architectural divider line */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9bcae 20%, #c9bcae 80%, transparent);
+      margin: 2.2rem 0 1.8rem 0;
+    }
+
+    /* rating pill with soft gradient */
+    .rating-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: #f8f8f8;
-      padding: 8px 18px;
-      border-radius: 40px;
-      margin-bottom: 25px;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, #faf7f2, #f0ece5);
+      padding: 0.6rem 1.5rem 0.6rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #e2d9cf;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      margin-bottom: 2rem;
+      font-size: 1rem;
     }
+
     .stars {
-      color: #d4af37;
-      letter-spacing: 2px;
-      font-size: 18px;
+      color: #c79b4b;
+      letter-spacing: 3px;
+      font-size: 1.2rem;
     }
-    .badge {
-      background: #e8e8e8;
-      padding: 4px 12px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 500;
+
+    .pill-badge {
+      background-color: #dcd3c8;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #3b352e;
     }
 
     h1 {
-      font-size: 48px;
-      font-weight: 400;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-
-    .architect-name {
-      background: #f0f0f0;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 500;
+      font-size: 4.2rem;
+      font-weight: 450;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #1f1b16;
+      margin-bottom: 0.4rem;
     }
 
     .subhead {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 30px;
-      border-left: 3px solid #aaa;
-      padding-left: 20px;
+      font-size: 1.35rem;
+      font-weight: 350;
+      color: #6a5f54;
+      border-left: 4px solid #cbb59e;
+      padding-left: 1.5rem;
+      margin: 0.5rem 0 2.2rem 0;
     }
 
-    .grid-2, .testimonial-grid, .services-grid {
+    /* architect highlight */
+    .principal {
+      font-weight: 500;
+      background: linear-gradient(145deg, #f3ede6, #fcf9f5);
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      display: inline-block;
+      border: 1px solid #e3d9ce;
+      font-size: 1.05rem;
+    }
+
+    /* service cards – with hover animation and subtle shadow */
+    .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin: 30px 0;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0 2rem;
     }
 
     .service-card {
-      background: #fcfcfc;
-      border: 1px solid #eee;
-      border-radius: 24px;
-      padding: 28px 22px;
+      background: #fdfcfa;
+      border: 1px solid #efe7de;
+      border-radius: 2rem;
+      padding: 2rem 1.5rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 5px 15px -8px rgba(90, 70, 55, 0.1);
     }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: #cbb59e;
+      box-shadow: 0 20px 27px -15px #b8aa9b;
+      background: white;
+    }
+
+    .service-card i {
+      font-size: 2rem;
+      color: #a3866a;
+      margin-bottom: 1.2rem;
+    }
+
     .service-card h3 {
-      font-size: 22px;
-      font-weight: 450;
-      margin-bottom: 12px;
+      font-weight: 520;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      color: #2f2922;
     }
+
     .service-card p {
-      color: #444;
+      color: #5f564d;
+      font-size: 0.95rem;
+    }
+
+    /* testimonial carousel (but grid) */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2rem 0 2.5rem;
     }
 
     .testimonial {
-      background: #f9f9f9;
-      border-radius: 24px;
-      padding: 28px;
-    }
-    .testimonial p {
-      font-size: 16px;
-    }
-    .author {
-      margin-top: 15px;
-      font-weight: 500;
-      color: #666;
+      background: #fcf8f4;
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      border: 1px solid #e6ded4;
+      box-shadow: 0 10px 18px -12px rgba(60, 50, 40, 0.12);
+      transition: 0.15s;
     }
 
-    .gallery {
+    .testimonial:hover {
+      background: #fffcf9;
+      border-color: #d0bfae;
+    }
+
+    .testimonial p {
+      font-size: 1rem;
+      color: #302a23;
+      line-height: 1.6;
+    }
+
+    .testimonial .author {
+      margin-top: 1.5rem;
+      font-weight: 500;
+      color: #947f6b;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* gallery with polaroid-ish effect */
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin: 25px 0 35px;
+      gap: 1.2rem;
+      margin: 2rem 0 2.2rem;
     }
+
     .gallery-item {
       aspect-ratio: 1/1;
-      background: #eaeaea;
-      border-radius: 20px;
+      background: #dad2c5;
+      border-radius: 1.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #666;
-      font-size: 24px;
+      font-size: 2.8rem;
+      color: #5f4f3e;
+      border: 1px solid #ddd1c2;
+      transition: all 0.2s;
+      box-shadow: 0 5px 12px rgba(70, 50, 35, 0.05);
     }
 
-    /* contact buttons — direct app opens */
+    .gallery-item:hover {
+      transform: scale(1.02);
+      border-color: #b2977e;
+      box-shadow: 0 15px 25px -12px #ad9b88;
+    }
+
+    /* contact strip – modern big buttons */
     .contact-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
-      margin: 30px 0 20px;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
     }
+
     .contact-btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-      border-radius: 60px;
-      padding: 14px 28px;
+      gap: 1rem;
+      background: #f7f3ee;
+      border: 1px solid #dbd0c4;
+      border-radius: 3rem;
+      padding: 1.1rem 2.3rem;
+      font-size: 1.1rem;
+      font-weight: 480;
+      color: #2b241e;
       text-decoration: none;
-      color: #000;
-      font-size: 16px;
-      font-weight: 450;
-      transition: 0.1s;
-    }
-    .contact-btn:hover {
-      background: #ececec;
-      border-color: #bbb;
-    }
-    .contact-btn span {
-      font-size: 22px;
+      transition: all 0.18s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+      flex: 0 1 auto;
     }
 
+    .contact-btn i {
+      font-size: 1.5rem;
+      color: #95785c;
+    }
+
+    .contact-btn:hover {
+      background: #efe7de;
+      border-color: #b99f88;
+      box-shadow: 0 10px 20px -10px #b6a085;
+      transform: scale(1.02);
+    }
+
+    /* address block with soft background */
     .address-card {
-      background: #fafafa;
-      border-radius: 24px;
-      padding: 25px 30px;
-      border: 1px solid #ececec;
-      margin: 20px 0;
+      background: #f5f1eb;
+      border-radius: 2rem;
+      padding: 2rem 2.5rem;
+      border: 1px solid #e1d7cc;
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
       align-items: center;
-    }
-    .address-icon {
-      font-size: 26px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 40px 0 20px;
+      justify-content: space-between;
+      margin: 1.8rem 0 1rem;
+      box-shadow: inset 0 2px 5px rgba(255,255,255,0.8), 0 5px 12px rgba(100, 80, 65, 0.05);
     }
 
-    @media (max-width: 600px) {
-      .page { padding: 25px; }
-      h1 { font-size: 36px; }
-      .gallery { grid-template-columns: repeat(2, 1fr); }
+    .address-left {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .address-left i {
+      font-size: 2rem;
+      color: #9f8975;
+    }
+
+    .focus-tag {
+      background: #e5dbd1;
+      padding: 0.6rem 1.5rem;
+      border-radius: 3rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #3e342b;
+    }
+
+    .meta-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      color: #948c82;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed #dad2c7;
+    }
+
+    .meta-footer i {
+      color: #a5856b;
+    }
+
+    @media (max-width: 750px) {
+      .content { padding: 2rem 1.5rem; }
+      h1 { font-size: 3rem; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-strip .contact-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
+  <div class="studio">
+    <div class="content">
 
-    <!-- header with rating -->
-    <div class="rating-wrapper">
-      <span class="stars">★★★★★</span>
-      <span style="font-weight:500;">4.9</span>
-      <span class="badge">Architect</span>
-      <span class="badge">Closed</span>
-    </div>
-
-    <h1>9 Square</h1>
-    <div class="subhead">Architecture · Interiors · Sargasan, Gandhinagar</div>
-
-    <!-- about -->
-    <p style="font-size: 18px; max-width: 780px; margin-bottom: 40px;">
-      9 Square is a well-reviewed architectural and interior design practice based in Sargasan, Gandhinagar, Gujarat. 
-      The firm offers architectural design, interior planning, and building services for residential and commercial projects. 
-      Known locally for creative design solutions, attention to detail, and a client‑oriented approach. 
-      Clients specifically praise principal architect <span class="architect-name">Shaileshbhai Gajjar</span> for his hands‑on involvement, innovative designs, responsive communication, and ability to deliver within budget and on time.
-    </p>
-
-    <!-- services / core strengths -->
-    <h2 style="font-size: 28px; font-weight: 400; margin-bottom: 15px;">Key skills & services</h2>
-    <div class="services-grid">
-      <div class="service-card"><h3>📐 Architectural design & planning</h3><p>Residential & commercial, tailored concepts, building approvals</p></div>
-      <div class="service-card"><h3>🛋️ Residential & commercial interiors</h3><p>Full interior design, finish selection, custom furniture</p></div>
-      <div class="service-card"><h3>📏 Space optimization & layout</h3><p>Innovative floor plans, flow efficiency, maximum utility</p></div>
-      <div class="service-card"><h3>👁️ Client communication & supervision</h3><p>On‑site project monitoring, transparent updates, punctual delivery</p></div>
-      <div class="service-card"><h3>💰 Budget‑friendly solutions</h3><p>Value engineering, cost control without compromising quality</p></div>
-    </div>
-
-    <!-- philosophy / quote -->
-    <div style="margin: 40px 0 20px; background: #f9f9f9; padding: 30px; border-radius: 28px;">
-      <p style="font-size: 20px; color: #333;">“Client‑centric design, innovation, functional aesthetics — we treat every project as our own.”<br> <span style="color: #777;">— Shaileshbhai Gajjar</span></p>
-    </div>
-
-    <!-- testimonials -->
-    <h2 style="font-size: 28px; font-weight: 400; margin-bottom: 15px;">Client feedback</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial"><p>“He made our dream project his own. Very creative, always punctual, and the quality exceeded our expectations. One of the best architects in Gandhinagar.”</p><div class="author">— Priya & Ankit, residential</div></div>
-      <div class="testimonial"><p>“Saileshbhai’s attention to detail and budget‑friendly approach helped us achieve a stunning interior for our clinic. Highly responsive and professional.”</p><div class="author">— Dr. Meera S.</div></div>
-      <div class="testimonial"><p>“Excellent communication from start to finish. He listens, adapts, and delivers with a smile. Our commercial space looks outstanding.”</p><div class="author">— Arvind Patel, retail</div></div>
-    </div>
-
-    <!-- gallery placeholder (Instagram style) -->
-    <h2 style="font-size: 28px; font-weight: 400; margin: 40px 0 10px;">Gallery</h2>
-    <div class="gallery">
-      <div class="gallery-item">🏡</div>
-      <div class="gallery-item">🪑</div>
-      <div class="gallery-item">🍽️</div>
-      <div class="gallery-item">🏛️</div>
-    </div>
-
-    <!-- CONTACT SECTION – all buttons open native apps (phone, whatsapp, mail) -->
-    <h2 style="font-size: 28px; font-weight: 400; margin: 40px 0 10px;">Connect</h2>
-
-    <div class="contact-strip">
-      <!-- PHONE – opens phone app -->
-      <a href="tel:+919998615904" class="contact-btn"><span>📞</span> +91 99986 15904</a>
-
-      <!-- WHATSAPP – opens whatsapp with pre‑filled message (international format) -->
-      <a href="https://wa.me/919998615904?text=Hello%20Shaileshbhai%2C%20I%27m%20interested%20in%20discussing%20an%20architectural%20project." target="_blank" class="contact-btn"><span>💬</span> WhatsApp</a>
-
-      <!-- EMAIL – opens default mail app with subject & body -->
-      <a href="mailto:studio@9squarearch.com?subject=Inquiry%20from%20website%20–%20architect%20project&body=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="contact-btn"><span>✉️</span> studio@9squarearch.com</a>
-    </div>
-
-    <!-- full address -->
-    <div class="address-card">
-      <span class="address-icon">📍</span>
-      <div style="flex:1;">
-        <strong>A-410, Siddhraj Zori</strong><br>
-        Near Sargasan Cross Road, Gandhinagar, Gujarat 382421, India
+      <!-- rating + architect badge + closed indicator -->
+      <div class="rating-pill">
+        <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+        <span style="font-weight: 600;">4.9</span>
+        <span class="pill-badge"><i class="far fa-building" style="margin-right: 4px;"></i> architect</span>
+        <span class="pill-badge" style="background:#d4c9bc;">⏴ closed</span>
       </div>
-      <span style="color: #666;">🗺️ Architectural design · interior design · planning</span>
-    </div>
 
-    <!-- additional contact line -->
-    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 15px; color: #555;">
-      <span>📞 +91 99986 15904 (also WhatsApp)</span>
-      <span>⏰ Mon–Sat 10am – 7pm</span>
-    </div>
+      <!-- firm name -->
+      <h1>9 SQUARE</h1>
+      <div class="subhead">architecture · interiors · sargasan, gandhinagar</div>
 
-    <hr>
+      <!-- about paragraph with principal name highlighted -->
+      <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 2.8rem; color: #2d2822;">
+        <span style="font-weight: 400;">9 Square</span> is a well-reviewed architectural and interior design practice based in Sargasan, Gandhinagar, Gujarat.  
+        Offers architectural design, interior planning, and building services for residential & commercial projects.  
+        Known locally for creative design solutions, attention to detail, and client‑oriented approach.  
+        Clients specifically praise principal architect <span class="principal"><i class="fas fa-user-astronaut" style="margin-right: 6px;"></i>Shaileshbhai Gajjar</span> for his hands‑on involvement, innovative designs, responsive communication, and ability to deliver within budget and on time.
+      </p>
 
-    <!-- footer -->
-    <div style="display: flex; justify-content: space-between; color: #777; font-size: 14px;">
-      <span>© 9 Square – Architects (Sargasan, Gandhinagar)</span>
-      <span>Data can be edited later · 2025</span>
-    </div>
+      <!-- divider -->
+      <div class="divider"></div>
 
-    <!-- tiny note: all contact links are fully functional, open native apps -->
-    <!-- you can replace gallery images, email, phone later as needed -->
-  </div>
+      <!-- core strengths / skills -->
+      <h2 style="font-size: 2rem; font-weight: 420; letter-spacing: -0.02em;">core strengths</h2>
+      <div class="service-grid">
+        <div class="service-card"><i class="fas fa-drafting-compass"></i><h3>Architectural design</h3><p>Residential & commercial · planning · approvals</p></div>
+        <div class="service-card"><i class="fas fa-couch"></i><h3>Interior design</h3><p>Full interior, finishes, custom furniture</p></div>
+        <div class="service-card"><i class="fas fa-vector-square"></i><h3>Space optimization</h3><p>Innovative layouts, flow efficiency</p></div>
+        <div class="service-card"><i class="fas fa-hard-hat"></i><h3>Project supervision</h3><p>On‑site coordination, budget monitoring</p></div>
+        <div class="service-card"><i class="fas fa-coins"></i><h3>Budget solutions</h3><p>Value engineering, cost control</p></div>
+        <div class="service-card"><i class="fas fa-comments"></i><h3>Client communication</h3><p>Responsive, transparent process</p></div>
+      </div>
+
+      <!-- philosophy & quote -->
+      <div style="background: linear-gradient(135deg, #faf6f1, #f2ece4); border-radius: 2.5rem; padding: 2.5rem; margin: 2rem 0 1.5rem; border: 1px solid #e2d8cd;">
+        <i class="fas fa-quote-left" style="font-size: 2rem; color: #cbb59e; opacity: 0.6; margin-bottom: 1rem; display: block;"></i>
+        <p style="font-size: 1.8rem; font-weight: 330; line-height: 1.3; color: #2d271f;">“Client‑centric design, innovation, functional aesthetics — we treat every project as our own.”</p>
+        <p style="margin-top: 1.2rem; font-size: 1.2rem; color: #7f6f5e;">— Shaileshbhai Gajjar, principal architect</p>
+      </div>
+
+      <!-- testimonials -->
+      <h2 style="font-size: 2rem; font-weight: 420; margin: 2rem 0 1rem;">client feedback</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial"><i class="fas fa-star" style="color:#ba8e5a; font-size: 0.9rem;"></i><p>“He made our dream project his own. Very creative, always punctual, and the quality exceeded our expectations. One of the best architects in Gandhinagar.”</p><div class="author"><i class="fas fa-user-circle"></i> Priya & Ankit, residential</div></div>
+        <div class="testimonial"><i class="fas fa-star" style="color:#ba8e5a; font-size: 0.9rem;"></i><p>“Saileshbhai’s attention to detail and budget‑friendly approach helped us achieve a stunning interior for our clinic. Highly responsive.”</p><div class="author"><i class="fas fa-user-md"></i> Dr. Meera S.</div></div>
+        <div class="testimonial"><i class="fas fa-star" style="color:#ba8e5a; font-size: 0.9rem;"></i><p>“Excellent communication from start to finish. He listens, adapts, and delivers with a smile. Our commercial space looks outstanding.”</p><div class="author"><i class="fas fa-store-alt"></i> Arvind Patel, retail</div></div>
+      </div>
+
+      <!-- gallery with subtle icons (can be replaced by actual images) -->
+      <h2 style="font-size: 2rem; font-weight: 420; margin: 2rem 0 0.8rem;">gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><i class="fas fa-archway"></i></div>
+        <div class="gallery-item"><i class="fas fa-tree"></i></div>
+        <div class="gallery-item"><i class="fas fa-building"></i></div>
+        <div class="gallery-item"><i class="fas fa-home"></i></div>
+      </div>
+
+      <!-- divider -->
+      <div class="divider"></div>
+
+      <!-- CONTACT BUTTONS – open native apps -->
+      <h2 style="font-size: 2rem; font-weight: 420; margin-bottom: 0.5rem;">connect</h2>
+      <div class="contact-strip">
+        <a href="tel:+919998615904" class="contact-btn"><i class="fas fa-phone-alt"></i> +91 99986 15904</a>
+        <a href="https://wa.me/919998615904?text=Hello%20Shaileshbhai%2C%20I'm%20interested%20in%20discussing%20an%20architectural%20project." target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> whatsapp</a>
+        <a href="mailto:studio@9squarearch.com?subject=Inquiry%20from%20website%20–%20architect%20project&body=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="contact-btn"><i class="far fa-envelope"></i> studio@9squarearch.com</a>
+      </div>
+
+      <!-- address with map icon and focus tag -->
+      <div class="address-card">
+        <div class="address-left">
+          <i class="fas fa-map-pin"></i>
+          <span><strong>A-410, Siddhraj Zori</strong><br>Near Sargasan Cross Road, Gandhinagar, Gujarat 382421, India</span>
+        </div>
+        <div class="focus-tag"><i class="fas fa-compass"></i> focus: arch., interiors, planning</div>
+      </div>
+
+      <!-- extra contact row -->
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin: 0.8rem 0 2rem; color: #685e53;">
+        <span><i class="fas fa-mobile-alt" style="margin-right: 0.5rem;"></i> +91 99986 15904 (also WhatsApp)</span>
+        <span><i class="far fa-clock"></i> Mon–Sat 10am – 7pm</span>
+      </div>
+
+      <!-- footer with small caps -->
+      <div class="meta-footer">
+        <span><i class="far fa-copyright"></i> 9 square · architects (sargasan, gandhinagar)</span>
+        <span><i class="fas fa-pencil-ruler"></i> data editable later · 2025</span>
+      </div>
+    </div> <!-- end content -->
+  </div> <!-- end studio -->
 </body>
 </html>
