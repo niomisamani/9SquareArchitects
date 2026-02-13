@@ -155,11 +155,13 @@
       border-radius: 50%;
       border: 5px solid white;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      /* REMOVED THE ROTATING ANIMATION */
     }
 
     .logo-img {
       max-width: 180px;
       filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+      /* REMOVED THE BOUNCE ANIMATION */
     }
 
     .section-title {
@@ -220,8 +222,8 @@
   <!-- hero section with company logo -->
   <div class="hero-section">
     <div class="container text-center">
-      <!-- REPLACE THIS SRC WITH YOUR COMPANY LOGO -->
-      <img src="https://via.placeholder.com/180x80/ffffff/000000?text=YOUR+LOGO+HERE" alt="Company Logo" class="logo-img mb-4">
+      <!-- YOUR COMPANY LOGO - Place at: images/logo.png -->
+      <img src="images/logo.png" alt="9 Square Logo" class="logo-img mb-4">
       <div class="rating-badge mb-4">
         <i class="fas fa-star text-warning"></i>
         <i class="fas fa-star text-warning"></i>
@@ -241,12 +243,12 @@
   </div>
 
   <div class="container my-5">
-    <!-- principal architect profile with photo - REPLACE IMAGE SRC -->
+    <!-- principal architect profile with photo - NO ROTATION -->
     <div class="profile-section text-center">
       <div class="row align-items-center">
         <div class="col-md-4">
-          <!-- REPLACE THIS WITH YOUR PRINCIPAL ARCHITECT'S PHOTO -->
-          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Shaileshbhai Gajjar" class="profile-img">
+          <!-- YOUR ARCHITECT PHOTO - Place at: images/architect.jpg -->
+          <img src="images/architect.jpg" alt="Shaileshbhai Gajjar" class="profile-img">
         </div>
         <div class="col-md-8">
           <h2 class="display-4 fw-bold">Shaileshbhai Gajjar</h2>
@@ -260,7 +262,7 @@
       </div>
     </div>
 
-    <!-- IMAGE CAROUSEL - REPLACE ALL image SRC WITH YOUR OWN PHOTOS -->
+    <!-- IMAGE CAROUSEL - Place 10-15 photos in images/gallery/ folder -->
     <h2 class="section-title text-center">Our Recent Work</h2>
     <div id="projectCarousel" class="carousel slide mb-5" data-bs-ride="false" data-bs-interval="false">
       <div class="carousel-indicators">
@@ -281,71 +283,68 @@
         <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="14"></button>
       </div>
       <div class="carousel-inner">
-        <!-- REPLACE ALL image URLs BELOW WITH YOUR OWN PHOTOS -->
+        <!-- GALLERY IMAGES - Replace with your photos: images/gallery/project1.jpg, project2.jpg etc -->
         <div class="carousel-item active">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" class="d-block w-100" alt="Project 1">
+          <img src="images/gallery/project1.jpg" class="d-block w-100" alt="Project 1">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 1 - Modern Villa</h5>
+            <h5>Modern Villa</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" class="d-block w-100" alt="Project 2">
+          <img src="images/gallery/project2.jpg" class="d-block w-100" alt="Project 2">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 2 - Luxury Interior</h5>
+            <h5>Luxury Interior</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200" class="d-block w-100" alt="Project 3">
+          <img src="images/gallery/project3.jpg" class="d-block w-100" alt="Project 3">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 3 - Commercial Space</h5>
+            <h5>Commercial Space</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600573472591-ee6c8e695481?w=1200" class="d-block w-100" alt="Project 4">
+          <img src="images/gallery/project4.jpg" class="d-block w-100" alt="Project 4">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 4 - Minimalist Home</h5>
+            <h5>Minimalist Home</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=1200" class="d-block w-100" alt="Project 5">
+          <img src="images/gallery/project5.jpg" class="d-block w-100" alt="Project 5">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 5 - Office Design</h5>
-          </div>
-        </div>
-        <!-- ADD MORE CAROUSEL ITEMS HERE (copy the div above and change src) 
-             You can add up to 15 items easily. Just duplicate the .carousel-item div 
-             and update the image src and caption text. Also add corresponding indicator 
-             buttons above (I've already added up to 15 indicators for you) -->
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200" class="d-block w-100" alt="Project 6">
-          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 6 - Living Room</h5>
+            <h5>Office Design</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200" class="d-block w-100" alt="Project 7">
+          <img src="images/gallery/project6.jpg" class="d-block w-100" alt="Project 6">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 7 - Kitchen Design</h5>
+            <h5>Living Room</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=1200" class="d-block w-100" alt="Project 8">
+          <img src="images/gallery/project7.jpg" class="d-block w-100" alt="Project 7">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 8 - Bedroom</h5>
+            <h5>Kitchen Design</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1200" class="d-block w-100" alt="Project 9">
+          <img src="images/gallery/project8.jpg" class="d-block w-100" alt="Project 8">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 9 - Bathroom</h5>
+            <h5>Bedroom</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=1200" class="d-block w-100" alt="Project 10">
+          <img src="images/gallery/project9.jpg" class="d-block w-100" alt="Project 9">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-            <h5>Project 10 - Exterior</h5>
+            <h5>Bathroom</h5>
           </div>
         </div>
+        <div class="carousel-item">
+          <img src="images/gallery/project10.jpg" class="d-block w-100" alt="Project 10">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <h5>Exterior</h5>
+          </div>
+        </div>
+        <!-- Add more up to 15 - just duplicate and change number -->
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -494,10 +493,10 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Initialize carousel with auto-play OFF (manual control only)
+    // Initialize carousel with auto-play OFF
     document.addEventListener('DOMContentLoaded', function() {
       var carousel = new bootstrap.Carousel(document.getElementById('projectCarousel'), {
-        interval: false,  // Disable auto rotation
+        interval: false,
         wrap: true,
         touch: true
       });
