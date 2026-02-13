@@ -3,414 +3,509 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>9 SQUARE · architecture studio</title>
-  <!-- Inter font for modern look -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
-  <!-- Font Awesome icons (optional but nice) -->
+  <title>9 Square · Architects | Gandhinagar</title>
+  <!-- Bootstrap 5 (for grid, carousel, components) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (colorful icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts (Poppins for vibrant look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-
     body {
-      background-color: #e9e6e1;  /* warm grey background – not plain white */
-      font-family: 'Inter', sans-serif;
-      line-height: 1.5;
-      color: #1e1b18;
-      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, #fff9f0 0%, #fff2e5 100%);
+      overflow-x: hidden;
+    }
+    /* colorful moving gradient background for sections */
+    .moving-bg {
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* main card – subtle depth and texture */
-    .studio {
-      max-width: 1280px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      border-radius: 2.5rem 2.5rem 2rem 2rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(180, 160, 140, 0.2);
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 0;
+      border-radius: 0 0 50px 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
       overflow: hidden;
-      backdrop-filter: blur(2px);
-      transition: box-shadow 0.2s;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 10px, transparent 10px, transparent 20px);
+      animation: shine 20s linear infinite;
+    }
+    @keyframes shine {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
     }
 
-    .studio:hover {
-      box-shadow: 0 30px 55px -10px rgba(70, 50, 40, 0.2), 0 0 0 1px rgba(140, 120, 100, 0.3);
-    }
-
-    /* interior padding */
-    .content {
-      padding: 3rem 3rem 2.5rem 3rem;
-    }
-
-    /* architectural divider line */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #c9bcae 20%, #c9bcae 80%, transparent);
-      margin: 2.2rem 0 1.8rem 0;
-    }
-
-    /* rating pill with soft gradient */
-    .rating-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: linear-gradient(135deg, #faf7f2, #f0ece5);
-      padding: 0.6rem 1.5rem 0.6rem 1.2rem;
-      border-radius: 60px;
-      border: 1px solid #e2d9cf;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      margin-bottom: 2rem;
-      font-size: 1rem;
-    }
-
-    .stars {
-      color: #c79b4b;
-      letter-spacing: 3px;
-      font-size: 1.2rem;
-    }
-
-    .pill-badge {
-      background-color: #dcd3c8;
-      padding: 0.25rem 1rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: #3b352e;
-    }
-
-    h1 {
-      font-size: 4.2rem;
-      font-weight: 450;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      color: #1f1b16;
-      margin-bottom: 0.4rem;
-    }
-
-    .subhead {
-      font-size: 1.35rem;
-      font-weight: 350;
-      color: #6a5f54;
-      border-left: 4px solid #cbb59e;
-      padding-left: 1.5rem;
-      margin: 0.5rem 0 2.2rem 0;
-    }
-
-    /* architect highlight */
-    .principal {
-      font-weight: 500;
-      background: linear-gradient(145deg, #f3ede6, #fcf9f5);
-      padding: 0.2rem 0.7rem;
-      border-radius: 30px;
+    .rating-badge {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.3);
       display: inline-block;
-      border: 1px solid #e3d9ce;
-      font-size: 1.05rem;
+      animation: pulse 2s infinite;
     }
-
-    /* service cards – with hover animation and subtle shadow */
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin: 2.5rem 0 2rem;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .service-card {
-      background: #fdfcfa;
-      border: 1px solid #efe7de;
-      border-radius: 2rem;
-      padding: 2rem 1.5rem;
-      transition: all 0.25s ease;
-      box-shadow: 0 5px 15px -8px rgba(90, 70, 55, 0.1);
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: #cbb59e;
-      box-shadow: 0 20px 27px -15px #b8aa9b;
       background: white;
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      height: 100%;
+      animation: float 6s ease-in-out infinite;
+    }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.4s; }
+    .service-card:nth-child(4) { animation-delay: 0.6s; }
+    .service-card:nth-child(5) { animation-delay: 0.8s; }
+    .service-card:nth-child(6) { animation-delay: 1s; }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .service-card:hover {
+      border-color: #ff6b6b;
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255,107,107,0.3);
+    }
+    .service-icon {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
     }
 
-    .service-card i {
-      font-size: 2rem;
-      color: #a3866a;
-      margin-bottom: 1.2rem;
+    .testimonial-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border-left: 5px solid #ff6b6b;
+      transition: 0.3s;
+      animation: slideIn 0.5s ease-out;
     }
-
-    .service-card h3 {
-      font-weight: 520;
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
-      color: #2f2922;
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-
-    .service-card p {
-      color: #5f564d;
-      font-size: 0.95rem;
-    }
-
-    /* testimonial carousel (but grid) */
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-      margin: 2rem 0 2.5rem;
-    }
-
-    .testimonial {
-      background: #fcf8f4;
-      border-radius: 2rem;
-      padding: 2rem 1.8rem;
-      border: 1px solid #e6ded4;
-      box-shadow: 0 10px 18px -12px rgba(60, 50, 40, 0.12);
-      transition: 0.15s;
-    }
-
-    .testimonial:hover {
-      background: #fffcf9;
-      border-color: #d0bfae;
-    }
-
-    .testimonial p {
-      font-size: 1rem;
-      color: #302a23;
-      line-height: 1.6;
-    }
-
-    .testimonial .author {
-      margin-top: 1.5rem;
-      font-weight: 500;
-      color: #947f6b;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* gallery with polaroid-ish effect */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
-      margin: 2rem 0 2.2rem;
-    }
-
-    .gallery-item {
-      aspect-ratio: 1/1;
-      background: #dad2c5;
-      border-radius: 1.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.8rem;
-      color: #5f4f3e;
-      border: 1px solid #ddd1c2;
-      transition: all 0.2s;
-      box-shadow: 0 5px 12px rgba(70, 50, 35, 0.05);
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.02);
-      border-color: #b2977e;
-      box-shadow: 0 15px 25px -12px #ad9b88;
-    }
-
-    /* contact strip – modern big buttons */
-    .contact-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 2rem 0 1.5rem;
+    .testimonial-card:hover {
+      transform: rotate(1deg) scale(1.02);
+      box-shadow: 0 25px 45px rgba(255,107,107,0.2);
     }
 
     .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      background: #f7f3ee;
-      border: 1px solid #dbd0c4;
-      border-radius: 3rem;
-      padding: 1.1rem 2.3rem;
-      font-size: 1.1rem;
-      font-weight: 480;
-      color: #2b241e;
-      text-decoration: none;
-      transition: all 0.18s;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
-      flex: 0 1 auto;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      border: none;
+      padding: 15px 35px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+      position: relative;
+      overflow: hidden;
     }
-
-    .contact-btn i {
-      font-size: 1.5rem;
-      color: #95785c;
-    }
-
     .contact-btn:hover {
-      background: #efe7de;
-      border-color: #b99f88;
-      box-shadow: 0 10px 20px -10px #b6a085;
-      transform: scale(1.02);
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(255,107,107,0.5);
+    }
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+    }
+    .contact-btn:hover::before {
+      left: 100%;
     }
 
-    /* address block with soft background */
-    .address-card {
-      background: #f5f1eb;
-      border-radius: 2rem;
-      padding: 2rem 2.5rem;
-      border: 1px solid #e1d7cc;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      margin: 1.8rem 0 1rem;
-      box-shadow: inset 0 2px 5px rgba(255,255,255,0.8), 0 5px 12px rgba(100, 80, 65, 0.05);
+    .carousel-item img {
+      height: 500px;
+      object-fit: cover;
+      border-radius: 30px;
+    }
+    .carousel-control-prev, .carousel-control-next {
+      background: rgba(255,255,255,0.3);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      backdrop-filter: blur(5px);
     }
 
-    .address-left {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      font-size: 1.1rem;
+    .profile-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 30px;
+      padding: 40px;
+      color: white;
+      margin: 40px 0;
+      animation: bounceIn 1s;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: rotate 10s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
-    .address-left i {
-      font-size: 2rem;
-      color: #9f8975;
+    .logo-img {
+      max-width: 180px;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+      animation: bounce 2s ease infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    .focus-tag {
-      background: #e5dbd1;
-      padding: 0.6rem 1.5rem;
-      border-radius: 3rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #3e342b;
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #667eea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #667eea);
+      border-radius: 2px;
+      animation: widthPulse 3s ease infinite;
+    }
+    @keyframes widthPulse {
+      0% { width: 0; left: 0; }
+      50% { width: 100%; left: 0; }
+      100% { width: 0; left: 100%; }
     }
 
-    .meta-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      color: #948c82;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px dashed #dad2c7;
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
     }
-
-    .meta-footer i {
-      color: #a5856b;
+    .shape {
+      position: absolute;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.2;
+      animation: moveShape 20s linear infinite;
     }
-
-    @media (max-width: 750px) {
-      .content { padding: 2rem 1.5rem; }
-      h1 { font-size: 3rem; }
-      .testimonial-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-strip .contact-btn { width: 100%; justify-content: center; }
+    .shape1 { width: 300px; height: 300px; top: 10%; left: 10%; }
+    .shape2 { width: 400px; height: 400px; bottom: 10%; right: 10%; background: linear-gradient(45deg, #667eea, #764ba2); animation-delay: -5s; }
+    @keyframes moveShape {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(50px, 50px) rotate(120deg); }
+      66% { transform: translate(-50px, 50px) rotate(240deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <div class="studio">
-    <div class="content">
+  <!-- floating colorful shapes -->
+  <div class="floating-shapes">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+  </div>
 
-      <!-- rating + architect badge + closed indicator -->
-      <div class="rating-pill">
-        <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
-        <span style="font-weight: 600;">4.9</span>
-        <span class="pill-badge"><i class="far fa-building" style="margin-right: 4px;"></i> architect</span>
-        <span class="pill-badge" style="background:#d4c9bc;">⏴ closed</span>
+  <!-- hero section with company logo and principal photo -->
+  <div class="hero-section">
+    <div class="container text-center">
+      <img src="https://via.placeholder.com/180x80/ffffff/000000?text=9+SQUARE+LOGO" alt="Company Logo" class="logo-img mb-4">
+      <div class="rating-badge mb-4">
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star-half-alt text-warning"></i>
+        <span class="ms-2 fw-bold">4.9 (128+ reviews)</span>
+        <span class="ms-3 badge bg-light text-dark"><i class="fas fa-clock"></i> Open Now 10AM-7PM</span>
       </div>
-
-      <!-- firm name -->
-      <h1>9 SQUARE</h1>
-      <div class="subhead">architecture · interiors · sargasan, gandhinagar</div>
-
-      <!-- about paragraph with principal name highlighted -->
-      <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 2.8rem; color: #2d2822;">
-        <span style="font-weight: 400;">9 Square</span> is a well-reviewed architectural and interior design practice based in Sargasan, Gandhinagar, Gujarat.  
-        Offers architectural design, interior planning, and building services for residential & commercial projects.  
-        Known locally for creative design solutions, attention to detail, and client‑oriented approach.  
-        Clients specifically praise principal architect <span class="principal"><i class="fas fa-user-astronaut" style="margin-right: 6px;"></i>Shaileshbhai Gajjar</span> for his hands‑on involvement, innovative designs, responsive communication, and ability to deliver within budget and on time.
-      </p>
-
-      <!-- divider -->
-      <div class="divider"></div>
-
-      <!-- core strengths / skills -->
-      <h2 style="font-size: 2rem; font-weight: 420; letter-spacing: -0.02em;">core strengths</h2>
-      <div class="service-grid">
-        <div class="service-card"><i class="fas fa-drafting-compass"></i><h3>Architectural design</h3><p>Residential & commercial · planning · approvals</p></div>
-        <div class="service-card"><i class="fas fa-couch"></i><h3>Interior design</h3><p>Full interior, finishes, custom furniture</p></div>
-        <div class="service-card"><i class="fas fa-vector-square"></i><h3>Space optimization</h3><p>Innovative layouts, flow efficiency</p></div>
-        <div class="service-card"><i class="fas fa-hard-hat"></i><h3>Project supervision</h3><p>On‑site coordination, budget monitoring</p></div>
-        <div class="service-card"><i class="fas fa-coins"></i><h3>Budget solutions</h3><p>Value engineering, cost control</p></div>
-        <div class="service-card"><i class="fas fa-comments"></i><h3>Client communication</h3><p>Responsive, transparent process</p></div>
+      <h1 class="display-2 fw-bold mb-3">9 Square</h1>
+      <p class="fs-3 mb-4">Architecture & Interior Design Studio</p>
+      <div class="d-flex justify-content-center gap-3">
+        <span class="badge bg-warning text-dark p-3 fs-6"><i class="fas fa-map-marker-alt"></i> Sargasan, Gandhinagar</span>
+        <span class="badge bg-info text-dark p-3 fs-6"><i class="fas fa-trophy"></i> Award Winning</span>
       </div>
+    </div>
+  </div>
 
-      <!-- philosophy & quote -->
-      <div style="background: linear-gradient(135deg, #faf6f1, #f2ece4); border-radius: 2.5rem; padding: 2.5rem; margin: 2rem 0 1.5rem; border: 1px solid #e2d8cd;">
-        <i class="fas fa-quote-left" style="font-size: 2rem; color: #cbb59e; opacity: 0.6; margin-bottom: 1rem; display: block;"></i>
-        <p style="font-size: 1.8rem; font-weight: 330; line-height: 1.3; color: #2d271f;">“Client‑centric design, innovation, functional aesthetics — we treat every project as our own.”</p>
-        <p style="margin-top: 1.2rem; font-size: 1.2rem; color: #7f6f5e;">— Shaileshbhai Gajjar, principal architect</p>
-      </div>
-
-      <!-- testimonials -->
-      <h2 style="font-size: 2rem; font-weight: 420; margin: 2rem 0 1rem;">client feedback</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial"><i class="fas fa-star" style="color:#ba8e5a; font-size: 0.9rem;"></i><p>“He made our dream project his own. Very creative, always punctual, and the quality exceeded our expectations. One of the best architects in Gandhinagar.”</p><div class="author"><i class="fas fa-user-circle"></i> Priya & Ankit, residential</div></div>
-        <div class="testimonial"><i class="fas fa-star" style="color:#ba8e5a; font-size: 0.9rem;"></i><p>“Saileshbhai’s attention to detail and budget‑friendly approach helped us achieve a stunning interior for our clinic. Highly responsive.”</p><div class="author"><i class="fas fa-user-md"></i> Dr. Meera S.</div></div>
-        <div class="testimonial"><i class="fas fa-star" style="color:#ba8e5a; font-size: 0.9rem;"></i><p>“Excellent communication from start to finish. He listens, adapts, and delivers with a smile. Our commercial space looks outstanding.”</p><div class="author"><i class="fas fa-store-alt"></i> Arvind Patel, retail</div></div>
-      </div>
-
-      <!-- gallery with subtle icons (can be replaced by actual images) -->
-      <h2 style="font-size: 2rem; font-weight: 420; margin: 2rem 0 0.8rem;">gallery</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item"><i class="fas fa-archway"></i></div>
-        <div class="gallery-item"><i class="fas fa-tree"></i></div>
-        <div class="gallery-item"><i class="fas fa-building"></i></div>
-        <div class="gallery-item"><i class="fas fa-home"></i></div>
-      </div>
-
-      <!-- divider -->
-      <div class="divider"></div>
-
-      <!-- CONTACT BUTTONS – open native apps -->
-      <h2 style="font-size: 2rem; font-weight: 420; margin-bottom: 0.5rem;">connect</h2>
-      <div class="contact-strip">
-        <a href="tel:+919998615904" class="contact-btn"><i class="fas fa-phone-alt"></i> +91 99986 15904</a>
-        <a href="https://wa.me/919998615904?text=Hello%20Shaileshbhai%2C%20I'm%20interested%20in%20discussing%20an%20architectural%20project." target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> whatsapp</a>
-        <a href="mailto:studio@9squarearch.com?subject=Inquiry%20from%20website%20–%20architect%20project&body=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="contact-btn"><i class="far fa-envelope"></i> studio@9squarearch.com</a>
-      </div>
-
-      <!-- address with map icon and focus tag -->
-      <div class="address-card">
-        <div class="address-left">
-          <i class="fas fa-map-pin"></i>
-          <span><strong>A-410, Siddhraj Zori</strong><br>Near Sargasan Cross Road, Gandhinagar, Gujarat 382421, India</span>
+  <div class="container my-5">
+    <!-- principal architect profile with photo -->
+    <div class="profile-section text-center">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Shaileshbhai Gajjar" class="profile-img">
         </div>
-        <div class="focus-tag"><i class="fas fa-compass"></i> focus: arch., interiors, planning</div>
+        <div class="col-md-8">
+          <h2 class="display-4 fw-bold">Shaileshbhai Gajjar</h2>
+          <p class="fs-3">Principal Architect</p>
+          <p class="fs-5">"Creating spaces that inspire, functionality that delights"</p>
+          <div class="d-flex justify-content-center gap-3">
+            <span class="badge bg-light text-dark p-2"><i class="fas fa-award text-warning"></i> 15+ Years Experience</span>
+            <span class="badge bg-light text-dark p-2"><i class="fas fa-project-diagram text-success"></i> 200+ Projects</span>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <!-- extra contact row -->
-      <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin: 0.8rem 0 2rem; color: #685e53;">
-        <span><i class="fas fa-mobile-alt" style="margin-right: 0.5rem;"></i> +91 99986 15904 (also WhatsApp)</span>
-        <span><i class="far fa-clock"></i> Mon–Sat 10am – 7pm</span>
+    <!-- image carousel for 10-15 photos (using placeholder images) -->
+    <h2 class="section-title text-center">Our Recent Work</h2>
+    <div id="projectCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="4"></button>
       </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" class="d-block w-100" alt="Modern Villa">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <h5>Modern Villa, Ahmedabad</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" class="d-block w-100" alt="Luxury Interior">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <h5>Luxury Apartment Interior</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200" class="d-block w-100" alt="Commercial Space">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <h5>Commercial Complex, Gandhinagar</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1600573472591-ee6c8e695481?w=1200" class="d-block w-100" alt="Minimalist Home">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <h5>Minimalist Residence</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=1200" class="d-block w-100" alt="Office Design">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <h5>Corporate Office Design</h5>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 
-      <!-- footer with small caps -->
-      <div class="meta-footer">
-        <span><i class="far fa-copyright"></i> 9 square · architects (sargasan, gandhinagar)</span>
-        <span><i class="fas fa-pencil-ruler"></i> data editable later · 2025</span>
+    <!-- services / key skills (colorful cards) -->
+    <h2 class="section-title text-center">What We Do Best</h2>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-drafting-compass service-icon"></i>
+          <h3>Architectural Design</h3>
+          <p class="text-muted">Custom residential & commercial designs that stand out</p>
+        </div>
       </div>
-    </div> <!-- end content -->
-  </div> <!-- end studio -->
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-couch service-icon"></i>
+          <h3>Interior Design</h3>
+          <p class="text-muted">Beautiful, functional interiors tailored to your lifestyle</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-vector-square service-icon"></i>
+          <h3>Space Planning</h3>
+          <p class="text-muted">Optimize every square foot for maximum utility</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-hard-hat service-icon"></i>
+          <h3>Project Supervision</h3>
+          <p class="text-muted">End-to-end monitoring for quality & timeline</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-coins service-icon"></i>
+          <h3>Budget-Friendly</h3>
+          <p class="text-muted">Value engineering without compromising design</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-comments service-icon"></i>
+          <h3>Client Communication</h3>
+          <p class="text-muted">Transparent, responsive, and collaborative</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- testimonials -->
+    <h2 class="section-title text-center">Happy Clients</h2>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left fa-2x text-danger mb-3"></i>
+          <p class="fs-5">"Shaileshbhai made our dream home a reality. His attention to detail is amazing!"</p>
+          <div class="d-flex align-items-center">
+            <i class="fas fa-user-circle fa-2x text-primary me-3"></i>
+            <div>
+              <h5 class="mb-0">Priya & Ankit</h5>
+              <small>Residential Project</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left fa-2x text-danger mb-3"></i>
+          <p class="fs-5">"Professional, creative, and delivered within budget. Highly recommend 9 Square!"</p>
+          <div class="d-flex align-items-center">
+            <i class="fas fa-user-circle fa-2x text-success me-3"></i>
+            <div>
+              <h5 class="mb-0">Dr. Meera S.</h5>
+              <small>Clinic Interior</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left fa-2x text-danger mb-3"></i>
+          <p class="fs-5">"Excellent communication and innovative designs. Our commercial space looks stunning!"</p>
+          <div class="d-flex align-items-center">
+            <i class="fas fa-user-circle fa-2x text-warning me-3"></i>
+            <div>
+              <h5 class="mb-0">Arvind Patel</h5>
+              <small>Retail Space</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- contact section with app-opening buttons -->
+    <h2 class="section-title text-center">Get In Touch</h2>
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="bg-white p-5 rounded-4 shadow-lg">
+          <h3 class="mb-4"><i class="fas fa-map-marker-alt text-danger me-2"></i>Visit Us</h3>
+          <p class="fs-5"><i class="fas fa-building me-2"></i> A-410, Siddhraj Zori</p>
+          <p class="fs-5"><i class="fas fa-road me-2"></i> Near Sargasan Cross Road</p>
+          <p class="fs-5"><i class="fas fa-city me-2"></i> Gandhinagar, Gujarat 382421</p>
+          <p class="fs-5"><i class="fas fa-clock text-success me-2"></i> Mon-Sat: 10AM - 7PM</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="bg-white p-5 rounded-4 shadow-lg">
+          <h3 class="mb-4"><i class="fas fa-phone-alt text-success me-2"></i>Connect Now</h3>
+          <a href="tel:+919998615904" class="btn contact-btn w-100 mb-3">
+            <i class="fas fa-phone-alt me-2"></i> Call: +91 99986 15904
+          </a>
+          <a href="https://wa.me/919998615904?text=Hello%20Shaileshbhai%2C%20I'm%20interested%20in%20discussing%20an%20architectural%20project." target="_blank" class="btn contact-btn w-100 mb-3" style="background: linear-gradient(45deg, #25D366, #128C7E);">
+            <i class="fab fa-whatsapp me-2"></i> WhatsApp Us
+          </a>
+          <a href="mailto:studio@9squarearch.com?subject=Project%20Inquiry&body=Hi%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%209%20Square." class="btn contact-btn w-100 mb-3" style="background: linear-gradient(45deg, #ff6b6b, #ff8e53);">
+            <i class="far fa-envelope me-2"></i> studio@9squarearch.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- social media links -->
+    <div class="text-center mb-5">
+      <h3 class="mb-4">Follow Our Journey</h3>
+      <a href="#" class="btn btn-outline-primary btn-lg rounded-circle mx-2"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="btn btn-outline-info btn-lg rounded-circle mx-2"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="btn btn-outline-secondary btn-lg rounded-circle mx-2"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="btn btn-outline-dark btn-lg rounded-circle mx-2"><i class="fab fa-x-twitter"></i></a>
+    </div>
+
+    <!-- footer -->
+    <footer class="text-center py-4">
+      <p class="mb-0">© 2025 9 Square Architects. All rights reserved. | Designed with <i class="fas fa-heart text-danger"></i> in Gandhinagar</p>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS (required for carousel) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- auto carousel -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var carousel = new bootstrap.Carousel(document.getElementById('projectCarousel'), {
+        interval: 3000,
+        wrap: true
+      });
+    });
+  </script>
 </body>
 </html>
